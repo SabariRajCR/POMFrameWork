@@ -1,12 +1,26 @@
 package com.leaftaps.pages;
 
+import org.apache.commons.collections4.functors.SwitchTransformer;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
 import com.leaftaps.base.ProjectSpecificMethods;
 
 public class CreateleadPage extends ProjectSpecificMethods {
 	
+	public CreateleadPage(){
+		
+		PageFactory.initElements(driver,this);
+		
+	}
+	@FindBy(how=How.ID,using="createLeadForm_companyName") WebElement companyname;
+	@FindBy(how=How.UNSET,using="createLeadForm_firstName") WebElement firstname;
 	public CreateleadPage EnterCompanyName(String cn) {
 
-		driver.findElementById("createLeadForm_companyName").sendKeys(cn);
+		companyname.sendKeys(cn);
 		return this;
 
 	}
